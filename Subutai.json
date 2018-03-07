@@ -1,0 +1,35 @@
+{
+    "name": "${environmentName}",
+    "description": "Subutai CDN Cache Node",
+    "containers": [
+        {
+            "hostname": "${webContainerName}",
+            "template": "cdn-cache-prod@a2941c4065e922e8cc9e7bb4614bcb98d743668b",
+            "peer-criteria": "HTTP-GROUP",
+            "size": "${webContainerSize}",
+            "port-mapping": [
+                {
+                "protocol": "https",
+                "domain": "${domainName}",
+                "internal-port": "8080",
+                "external-port": "8383"
+                },
+                {
+                "protocol": "http",
+                "domain": "${domainName}",
+                "internal-port": "8080",
+                "external-port": "8080"
+                }
+            ]
+        }
+    ],
+    "peer-criteria": [
+        {
+        "name": "HTTP-GROUP",
+        "max-price": "5",
+        "avg-cpu-load": "50",
+        "min-free-ram": "512",
+        "min-free-disk-space": "10"
+        }
+    ]
+}
