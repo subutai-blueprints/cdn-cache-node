@@ -9,7 +9,7 @@
             "size": "${webContainerSize}",
             "port-mapping": [
                 {
-                "protocol": "https",
+                "protocol": "http",
                 "domain": "${domainName}",
                 "internal-port": "8080",
                 "external-port": "8383"
@@ -32,7 +32,7 @@
         "min-free-disk-space": "10"
         }
     ],
-    
+
     "user-variables": {
         "environmentName": {
             "description": "Enter the environment name",
