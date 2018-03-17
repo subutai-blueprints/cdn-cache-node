@@ -1,62 +1,73 @@
 {
-    "name": "${environmentName}",
-    "description": "Subutai CDN Cache Node",
-    "containers": [
+  "name": "${environmentName}",
+  "description": "Subutai CDN Cache Node",
+  "version": "1.0.0",
+  "author": "https://github.com/emli",
+  "containers": [
+    {
+      "hostname": "${webContainerName}",
+      "template": "debian-stretch",
+      "peer-criteria": "HTTP-GROUP",
+      "size": "${containerSize}",
+      "port-mapping": [
         {
-            "hostname": "${webContainerName}",
-            "template": "cdn-cache-prod@a2941c4065e922e8cc9e7bb4614bcb98d743668b",
-            "peer-criteria": "HTTP-GROUP",
-            "size": "${webContainerSize}",
-            "port-mapping": [
-                {
-                "protocol": "http",
-                "domain": "${domainName}",
-                "internal-port": "8080",
-                "external-port": "8383"
-                },
-                {
-                "protocol": "http",
-                "domain": "${domainName}",
-                "internal-port": "8080",
-                "external-port": "8080"
-                }
-            ]
+          "protocol": "http",
+          "domain": "${domainName}",
+          "internal-port": "80",
+          "external-port": "8080"
         }
-    ],
-    "peer-criteria": [
-        {
-        "name": "HTTP-GROUP",
-        "max-price": "5",
-        "avg-cpu-load": "50",
-        "min-free-ram": "512",
-        "min-free-disk-space": "10"
-        }
-    ],
-
-    "user-variables": {
-        "environmentName": {
-            "description": "Enter the environment name",
-            "type": "string",
-            "default": "Ruby on Rails",
-            "validation": "[a-zA-Z0-9]+"
-          },
-          "domainName": {
-            "description": "Enter the application domain name",
-            "type": "domain",
-            "default": "change.the.domain",
-            "validation": "[a-zA-Z0-9]+"
-          },
-          "webContainerName": {
-            "description": "Enter the container's hostname",
-            "type": "string",
-            "default": "ruby-on-rails",
-            "validation": "[a-zA-Z0-9]+"
-          },
-          "webContainerSize": {
-            "description": "Set the container size to SMALL, MEDIUM, LARGE or HUGE",
-            "type": "enum",
-            "default": "SMALL",
-            "validation": "SMALL,MEDIUM,LARGE,HUGE"
-          }
+      ]
     }
+  ],
+  "peer-criteria": [
+    {
+      "name": "HTTP-GROUP",
+      "max-price": "25"
+    }
+  ],
+  "ansible-configuration": {
+    "source-url": "https://github.com/emli/cdn-cache-prod/archive/master.zip",
+    "ansible-playbook": "all.json",
+    "extra-vars": [
+      {
+        "key": "site_title",
+        "value": "${siteTitle}"
+      },
+      {
+        "key": "domain_name",
+        "value": "${domainName}"
+      }
+    ]
+  },
+  "user-variables": {
+    "environmentName": {
+      "description": "Enter the environment name",
+      "type": "string",
+      "default": "wp",
+      "validation": "[a-zA-Z0-9]+"
+    },
+    "domainName": {
+      "description": "Enter the application domain name",
+      "type": "domain",
+      "default": "change.the.domain",
+      "validation": "[a-zA-Z0-9]+"
+    },
+    "siteTitle": {
+      "description": "Enter the site's title",
+      "type": "string",
+      "default": "title"
+    },
+    "webContainerName": {
+      "description": "Enter the container's hostname",
+      "type": "string",
+      "default": "wp",
+      "validation": "[a-zA-Z0-9]+"
+    },
+    "containerSize": {
+      "description": "Container Size",
+      "type": "enum",
+      "default": "TINY",
+      "validation": "TINY,SMALL,MEDIUM,LARGE,HUGE"
+    }
+  }
 }
