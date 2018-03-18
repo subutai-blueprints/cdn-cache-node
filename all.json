@@ -4,21 +4,6 @@
     "remote_user": "root",
     "tasks": [
       {
-        "name": "apt-update",
-        "apt": {
-          "update_cache": "no",
-          "allow_unauthenticated": "yes",
-        }
-      },
-      {
-        "name": "install nginx",
-        "apt": {
-          "name": "nginx",
-          "allow_unauthenticated": "yes",
-          "update_cache": "no"
-        }
-      },
-      {
         "name": "get nginx settings",
         "get_url": {
           "url": "https://raw.githubusercontent.com/emli/production-ready-cache-node-settings/master/cdn.conf",

@@ -6,7 +6,7 @@
   "containers": [
     {
       "hostname": "${webContainerName}",
-      "template": "debian-stretch",
+      "template": "nginx",
       "peer-criteria": "HTTP-GROUP",
       "size": "${containerSize}",
       "port-mapping": [
