@@ -4,6 +4,22 @@
     "remote_user": "root",
     "tasks": [
       {
+        "name": "get nginx settings",
+        "get_url": {
+          "url": "https://raw.githubusercontent.com/emli/production-ready-cache-node-settings/master/cdn.conf",
+          "dest": "/etc/nginx/sites-enabled/",
+          "validate_certs": "no"
+        }
+      },
+      {
+        "name": "create directory for caching",
+        "file": {
+          "path": "/var/snap/subutai/common/cache/nginx/templ/",
+          "state": "directory",
+          "mode" : "0755"
+        }
+      },
+      {
         "name": "restart nginx",
         "service": {
           "name": "nginx",
