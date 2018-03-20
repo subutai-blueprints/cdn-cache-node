@@ -12,18 +12,18 @@
         }
       },
       {
-        "name": "restart nginx",
-        "service": {
-          "name": "nginx",
-          "state": "restarted"
-        }
-      },
-      {
         "name": "create directory for caching",
         "file": {
           "path": "/var/snap/subutai/common/cache/nginx/templ/",
           "state": "directory",
           "mode" : "0755"
+        }
+      },
+      {
+        "name": "restart nginx",
+        "service": {
+          "name": "nginx",
+          "state": "restarted"
         }
       }
     ]
