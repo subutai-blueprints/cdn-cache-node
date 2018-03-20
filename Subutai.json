@@ -14,13 +14,13 @@
           "protocol": "http",
           "domain": "${domainName}",
           "internal-port": "8080",
-          "external-port": "80"
+          "external-port": "8080"
         },
         {
           "protocol": "https",
           "domain": "${domainName}",
           "internal-port": "8338",
-          "external-port": "80"
+          "external-port": "8338"
         }
       ]
     }
