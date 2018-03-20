@@ -6,7 +6,7 @@
   "containers": [
     {
       "hostname": "${webContainerName}",
-      "template": "nginx",
+      "template": "nginx@subutai",
       "peer-criteria": "HTTP-GROUP",
       "size": "${containerSize}",
       "port-mapping": [
