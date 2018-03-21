@@ -23,7 +23,7 @@
     - lineinfile:
         path: /etc/nginx/sites-enabled/cdn.conf
         regexp: '^server_name'
-        line: 'server_name={{ domainName }}'
+        line: 'server_name={{ domain_name }}'
     
     - name: restart nginx
       service: name=nginx state=restarted
