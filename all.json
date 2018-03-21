@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 
 - hosts: ws
@@ -27,3 +28,20 @@
       line: 'server_name={{ domainName }}' 
     - name: restart nginx
       service: name=nginx state=restarted
+=======
+[
+  {
+    "hosts": "wp",
+    "remote_user": "root",
+    "tasks": [
+      {
+        "name": "restart nginx",
+        "service": {
+          "name": "nginx",
+          "state": "restarted"
+        }
+      }
+    ]
+  }
+]
+>>>>>>> 35efa767152cc74eefbfbb2482da26b3af3fd6ed

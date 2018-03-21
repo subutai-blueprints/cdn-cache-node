@@ -7,12 +7,16 @@
   "containers": [
     {
       "hostname": "${webContainerName}",
+<<<<<<< HEAD
       "template": "debian-stretch",
+=======
+      "template": "nginx-prod@a2941c4065e922e8cc9e7bb4614bcb98d743668b",
+>>>>>>> 35efa767152cc74eefbfbb2482da26b3af3fd6ed
       "peer-criteria": "HTTP-GROUP",
       "size": "${containerSize}",
       "port-mapping": [
         {
-          "protocol": "http",
+          "protocol": "https",
           "domain": "${domainName}",
           "internal-port": "80",
           "external-port": "80"
