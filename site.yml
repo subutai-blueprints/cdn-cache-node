@@ -13,20 +13,15 @@
       apt: 
         name: nginx
         allow_unauthenticated: true
-    
-    - name: Delete the old configuration file NGINX
-      file:
-          state: absent
-          path: /etc/nginx/sites-enabled/cnd.conf    
-    
+  
     - name: Replacing nginx config
       template:
           src: files/cdn.conf
-          dest: /etc/nginx/sites-enabled/cnd.conf
+          dest: /etc/nginx/sites-enabled/cdn.conf
       register: config
     
     - lineinfile:
-      path: /etc/nginx/sites-enabled/cnd.conf
+      path: /etc/nginx/sites-enabled/cdn.conf
       regexp: '^server_name'
       line: 'server_name={{ domainName }}' 
     
