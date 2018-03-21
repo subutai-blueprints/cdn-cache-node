@@ -15,12 +15,12 @@
         allow_unauthenticated: true
     
     - name: Delete the old configuration file NGINX
-        file:
+      file:
           state: absent
           path: /etc/nginx/sites-enabled/cnd.conf    
     
     - name: Replacing nginx config
-        template:
+      template:
           src: files/cdn.conf
           dest: /etc/nginx/sites-enabled/cnd.conf
       register: config
