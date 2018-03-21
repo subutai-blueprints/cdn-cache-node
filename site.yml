@@ -20,11 +20,12 @@
           dest: /etc/nginx/sites-enabled/cdn.conf
       register: config
     
-    - lineinfile:
-        path: /etc/nginx/sites-enabled/cdn.conf
-        regexp: '^server_name'
-        line: 'server_name={{ domain_name }}'
-    
+    - name: replace line
+        lineinfile:
+          dest: /etc/nginx/sites-enabled/cdn.conf
+          regexp: '^(.*)server_name(.*)$'
+          line: 'server_name={{ domain_name }}'
+          backrefs: yes
     - name: restart nginx
       service: name=nginx state=restarted
 
