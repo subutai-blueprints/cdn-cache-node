@@ -21,9 +21,9 @@
       register: config
     
     - lineinfile:
-      path: /etc/nginx/sites-enabled/cdn.conf
-      regexp: '^server_name'
-      line: 'server_name={{ domainName }}' 
+        path: /etc/nginx/sites-enabled/cdn.conf
+        regexp: '^server_name'
+        line: 'server_name={{ domainName }}'
     
     - name: restart nginx
       service: name=nginx state=restarted
