@@ -19,7 +19,11 @@
           src: files/cdn.conf
           dest: /etc/nginx/sites-enabled/cdn.conf
       register: config
-      
+    - file:
+        path: /var/snap/subutai/common/cache/nginx/templ/
+        state: directory
+        mode: 0755    
+        
     - name: restart nginx
       service: name=nginx state=restarted
 
