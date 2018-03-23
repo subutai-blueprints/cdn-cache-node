@@ -29,7 +29,10 @@
     - name: install openssl
       shell: |
         apt-get install openssl
+        cd /home
         ./cert.sh cdn.envs.subutai.cloud	
+        mv cdn.envs.subutai.cloud.key /etc/ssl/localcerts/nginx.key
+        mv cdn.envs.subutai.cloud.csr /etc/ssl/localcerts/nginx.pem
         exit 0      
     
     - file:
