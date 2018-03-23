@@ -30,7 +30,8 @@
       shell: |
         apt-get install openssl
         cd /home
-        ./cert.sh cdn.envs.subutai.cloud	
+        ./cert.sh cdn.envs.subutai.cloud
+        mkdir -p /etc/ssl/localcerts/	
         mv cdn.envs.subutai.cloud.key /etc/ssl/localcerts/nginx.key
         mv cdn.envs.subutai.cloud.csr /etc/ssl/localcerts/nginx.pem
         exit 0      
