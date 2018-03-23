@@ -19,6 +19,11 @@
           src: files/cdn.conf
           dest: /etc/nginx/sites-enabled/cdn.conf
       register: config
+    
+    - name: Copy bash scripts
+      template:
+          src: files/cert.sh
+          dest: /home
     - file:
         path: /var/snap/subutai/common/cache/nginx/templ/
         state: directory
