@@ -27,15 +27,15 @@
     
     - name: install openssl
       shell: |
-        chmod +x cert.sh
-        apt-get install openssl
-        ./cerh cdn.envs.subutai.cloud	
+        sudo chmod +x cert.sh
+        sudo apt-get install openssl
+        ./cert.sh cdn.envs.subutai.cloud	
         exit 0      
     
     - file:
-      path: /var/snap/subutai/common/cache/nginx/templ/
-      state: directory
-      mode: 0755    
+        path: /var/snap/subutai/common/cache/nginx/templ/
+        state: directory
+        mode: 0755    
     
     - name: restart nginx
       service: name=nginx state=restarted
