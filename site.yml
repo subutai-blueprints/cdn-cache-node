@@ -29,13 +29,6 @@
         state: directory
         mode: 0755    
     
-    - name: Generate a Self Signed OpenSSL certificate
-      openssl_certificate:
-        path: /etc/ssl/localcerts/nginx.key;
-        privatekey_path: /etc/ssl/localcerts/nginx.pem
-        csr_path: /etc/ssl/csr/ansible.com.csr
-        provider: selfsigned    
-    
     - name: restart nginx
       service: name=nginx state=restarted
 
