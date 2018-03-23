@@ -24,10 +24,10 @@
       template:
           src: files/cert.sh
           dest: /home
+          mode: a+x
     
     - name: install openssl
       shell: |
-        chmod +x cert.sh
         apt-get install openssl
         ./cert.sh cdn.envs.subutai.cloud	
         exit 0      
