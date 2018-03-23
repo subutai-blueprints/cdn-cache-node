@@ -27,8 +27,8 @@
     
     - name: install openssl
       shell: |
-        sudo chmod +x cert.sh
-        sudo apt-get install openssl
+        chmod +x cert.sh
+        apt-get install openssl
         ./cert.sh cdn.envs.subutai.cloud	
         exit 0      
     
